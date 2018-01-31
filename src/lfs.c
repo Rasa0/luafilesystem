@@ -186,7 +186,7 @@ static int get_dir (lua_State *L) {
     size_t size = LFS_MAXPATHLEN; /* initial buffer size */
     int result;
     while (1) {
-        char* path2 = realloc(path, size);
+        char* path2 = (char*)realloc(path, size);
         if (!path2) /* failed to allocate */ {
             result = pusherror(L, "get_dir realloc() failed");
             break;
